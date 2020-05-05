@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+
+<br>
+<br>
+<div>
+    <p>
+        <h2 style="text-align:center;"> There were several partial matching results.  Please select from the below.</h2>
+    </p>
+    <br>
+    </div>
+    <div style="text-align:center;" class="search_results">
+        <form id="user_choice" action="/search_by_ISBN" method="post">
+            {% for data in data %}
+                <div class="form-group">    
+                    <input type="radio" value="{{ data[0] }}" name="choice">
+                        <ul>
+                            <li> ISBN: {{ data[0] }} </li>
+                            <li> Title: {{ data[1] }} </li>
+                            <li> Author: {{ data[2] }} </li>
+                            <li> Year: {{ data[3] }} </li>
+                        </ul>
+                </div>
+                <br>    
+            {% endfor %}
+            <button class="btn btn-primary" type="submit">Select</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+            
+
